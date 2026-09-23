@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <!--
-  YDT CEVIRI LAB - Sayi 05 (IKI DOSYALI MIMARI)
+  YDT CUMLE TAMAMLAMA LAB - Sayi 04 (IKI DOSYALI MIMARI · v2)
   DOSYA 1/2: index.html (tasarim + uygulama)
-  DOSYA 2/2: veri.js (dersler + ceviri lab + 20 soru) -> ayni klasore
-  Iki kucuk dosya, kopyalama kirpilmasina dayaniklidir.
+  DOSYA 2/2: veri.js     (dersler + baglac lab + 20 soru) -> AYNI klasore
+
+  BAGLANTI: index.html, asagidaki satirla veri.js'i yukler:
+      <script src="veri.js"></script>
+  Iki dosya ayni klasordeyse sorular; derslere, denemeye, karneye ve
+  calisma kagidina otomatik baglanir. veri.js eksikse sayfa kirmizi
+  bantla soyler; tasarim yine acilir.
+  v2 duzeltmesi: deneme bolumundeki appendChild parantez hatasi giderildi.
 -->
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YDT Çeviri Lab — Türkçe-İngilizce · İngilizce-Türkçe Püf Noktaları</title>
-<meta name="description" content="YDT/YDS/YÖKDİL çeviri soruları: 6 beceri dersi, Çeviri Lab, 20 soruluk deneme (10 İngilizce→Türkçe + 10 Türkçe→İngilizce) ve A4 çalışma kâğıdı.">
+<title>YDT Cümle Tamamlama Lab — Mantık, Bağlaçlar ve Püf Noktaları</title>
+<meta name="description" content="YDT/YDS/YÖKDİL cümle tamamlama soruları: 6 beceri dersi, Bağlaç Lab, 20 soruluk deneme (10 baştan + 10 sondan tamamlama) ve A4 çalışma kâğıdı.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" rel="stylesheet">
@@ -49,6 +55,13 @@ a{color:inherit}
 .topnav a{text-decoration:none;font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:6px 10px;border-bottom:2px solid transparent;white-space:nowrap}
 .topnav a:hover{background:var(--paper2)}
 .topnav a.on{border-bottom-color:var(--ink)}
+/* SERI baglanti seridi */
+.seri{background:var(--ink);color:#DDD4C0;border-bottom:2px solid var(--ink)}
+.seri .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:7px 22px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.seri .lb{color:#C9BFA8;letter-spacing:.2em}
+.seri a{color:#F6DA49;text-decoration:none;border-bottom:1.5px dotted #8A7F66;padding-bottom:1px}
+.seri a:hover{color:#fff;border-bottom-color:#fff}
+.seri .cur{color:#FCFAF2;background:#3A3223;padding:3px 10px}
 .mast{border-bottom:2px solid var(--ink);padding:8px 0}
 .mast .wrap{display:flex;justify-content:space-between;gap:12px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--ink2)}
 .hero{padding:54px 0 30px}
@@ -119,12 +132,12 @@ section{padding:64px 0 20px}
 .modalmod td{border:1px solid var(--line);padding:9px 12px;vertical-align:top}
 .modalmod td:first-child{font-weight:800;white-space:nowrap}
 .exbox{background:var(--paper2);border-left:4px solid var(--ink);padding:12px 16px;font-family:'Newsreader',serif;font-style:italic;font-size:.95rem}
-#ceviri .lab{background:var(--paper2);border:2px solid var(--ink);padding:30px;box-shadow:8px 8px 0 rgba(33,27,18,.18)}
+#baglac .lab{background:var(--paper2);border:2px solid var(--ink);padding:30px;box-shadow:8px 8px 0 rgba(33,27,18,.18)}
 .lab-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:26px}
-.rootcard{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(33,27,18,.25);padding:26px;min-height:170px}
+.rootcard{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(33,27,18,.25);padding:26px;min-height:150px}
 .rootcard .lbl{font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--ink2);margin-bottom:10px}
-.rootcard .root{font-family:'Newsreader',serif;font-size:1.3rem;line-height:1.4}
-.rootcard .flt{font-family:'Newsreader',serif;font-style:italic;font-size:1rem;line-height:1.5;color:var(--bad);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.rootcard .root{font-family:'Newsreader',serif;font-style:italic;font-size:1.35rem;line-height:1.35}
+.rootcard .tr{font-size:.85rem;color:var(--ink2);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
 .catbtns{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:18px}
 .catb{font-family:inherit;font-weight:700;font-size:.74rem;padding:10px 4px;border:2px solid var(--c);background:color-mix(in srgb,var(--c) 8%,transparent);color:var(--ink);cursor:pointer}
 .catb:hover{background:var(--c);color:var(--card)}
@@ -149,18 +162,19 @@ section{padding:64px 0 20px}
 .sq-tab{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-bottom:2px solid var(--line);font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);background:var(--paper2)}
 .sq-tab b{color:var(--ink)}
 .sq-body{padding:14px 18px}
-.fact{font-family:'Newsreader',serif;font-size:1.14rem;line-height:1.75;margin-bottom:10px;cursor:pointer;transition:background .15s}
+.fact{font-family:'Newsreader',serif;font-size:1.06rem;line-height:1.7;margin-bottom:10px;cursor:pointer;transition:background .15s}
 .fact:last-child{margin-bottom:0}
 .fact:hover{background:color-mix(in srgb,var(--umark) 35%,transparent)}
 .fact.umark{background:var(--umark);box-shadow:.28em 0 0 var(--umark),-.28em 0 0 var(--umark)}
 .fact.evid{background:var(--hl);box-shadow:.28em 0 0 var(--hl),-.28em 0 0 var(--hl)}
 .fact.evid.umark{background:linear-gradient(110deg,var(--hl) 0 47%,var(--umark) 47% 100%)}
+.gap{font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-weight:800;color:var(--bad);letter-spacing:.02em}
 .sq-r{padding:16px 20px;display:flex;flex-direction:column}
 .qtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .qtop .chip{background:var(--c)}
 .qtop .qn{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
 .qtop .pts{margin-left:auto;font-size:.66rem;color:var(--ink2);font-style:italic;font-family:'Newsreader',serif}
-.stem{font-family:'Newsreader',serif;font-size:1.1rem;line-height:1.45;margin-bottom:16px;cursor:pointer;transition:background .15s}
+.stem{font-family:'Newsreader',serif;font-size:1.12rem;line-height:1.45;margin-bottom:16px;cursor:pointer;transition:background .15s}
 .stem:hover{background:color-mix(in srgb,var(--umark) 30%,transparent)}
 .stem.umark{background:var(--umark);box-shadow:.28em 0 0 var(--umark),-.28em 0 0 var(--umark)}
 .stem .kw{font-style:normal;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;text-decoration:underline;text-decoration-color:var(--c);text-decoration-thickness:2.5px;text-underline-offset:4px}
@@ -257,6 +271,7 @@ section{padding:64px 0 20px}
 .ws-oo{list-style:none;margin:8px 0 0}
 .ws-oo li{display:grid;grid-template-columns:26px 1fr;gap:6px;padding:2.5px 0;font-size:.94rem;line-height:1.45}
 .ws-oo .k{font-weight:800}
+.ws-bl{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:#C13F14}
 .ws-partb{padding:22px 34px 26px;border-bottom:3px double #14110B}
 .ws-key{padding:24px 34px 28px}
 .ws-kh{display:flex;align-items:center;gap:12px;background:#14110B;color:#FFFEF9;padding:12px 16px;margin-bottom:16px;flex-wrap:wrap}
@@ -298,7 +313,7 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
   @page{size:A4;margin:13mm}
   html,body{background:#fff}
   body{font-size:10.5pt}
-  .topbar,.mast,.hero,.strips,section:not(#calisma),footer,.toast,#errbar{display:none!important}
+  .topbar,.seri,.mast,.hero,.strips,section:not(#calisma),footer,.toast,#errbar{display:none!important}
   #calisma{padding:0}
   #calisma .sec-head,#calisma .ws-bar,#calisma .ws-note{display:none!important}
   #calisma .wrap{max-width:none;padding:0}
@@ -340,21 +355,31 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
 <body id="top">
 <header class="topbar"><div class="wrap">
   <a class="brand" href="#top">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#211B12" stroke-width="3"/><text x="16" y="22.5" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17" fill="#0E7568">Ç</text></svg>
-    YDT ÇEVİRİ LAB <span class="sub">opa fluent</span>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#211B12" stroke-width="3"/><text x="16" y="22.5" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="17" fill="#0E7568">C</text></svg>
+    YDT CÜMLE TAMAMLAMA LAB <span class="sub">opa fluent</span>
   </a>
   <nav class="topnav" id="topnav">
-    <a href="#dersler">Dersler</a><a href="#ceviri">Çeviri Lab</a><a href="#deneme">Deneme</a><a href="#karne">Karne</a><a href="#calisma">Kâğıt</a>
+    <a href="#dersler">Dersler</a><a href="#baglac">Bağlaç Lab</a><a href="#deneme">Deneme</a><a href="#karne">Karne</a><a href="#calisma">Kâğıt</a>
   </nav>
 </div></header>
 
-<div class="mast"><div class="wrap"><span>OPA FLUENT YAYINLARI</span><span>YDT · YDS · YÖKDİL</span><span>ÇEVİRİ BÜLTENİ · SAYI 05</span></div></div>
+<!-- SERİ BAĞLANTILARI: href="#" yerlerine kendi Netlify adreslerinizi yazın -->
+<div class="seri"><div class="wrap">
+  <span class="lb">Serİ</span>
+  <a href="#">01 · Reading</a>
+  <a href="#">02 · Diyalog &amp; Durum</a>
+  <a href="#">03 · Zamir &amp; Nicelik</a>
+  <span class="cur">04 · Cümle Tamamlama</span>
+  <a href="#">05 · Çeviri</a>
+</div></div>
+
+<div class="mast"><div class="wrap"><span>OPA FLUENT YAYINLARI</span><span>YDT · YDS · YÖKDİL</span><span>CÜMLE TAMAMLAMA BÜLTENİ · SAYI 04</span></div></div>
 
 <div class="hero"><div class="wrap">
   <div>
-    <p class="hero-kicker">Yalancı dostlar · Çatı aktarımı · Zaman uyumu · Diziliş</p>
-    <h1 class="big">Çeviri <span class="mark">kelime kelime</span><span class="serif">değil, mantık mantık yapılır.</span></h1>
-    <p class="hero-lead">Serinin beşinci sayısı — Reading (01) · Diyalog &amp; Durum (02) · Zamir &amp; Nicelik (03) · Cümle Tamamlama (04)&rsquo;ten sonra: <b>6 beceri dersi</b>, <b>16 kalıplı Çeviri Lab</b> (hatalı çeviriyi teşhis et) ve <b>20 özgün soru</b> — 10 İngilizce→Türkçe + 10 Türkçe→İngilizce. Her şıkta tek tek geribildirim, <b>kanıt vurgusu</b>, A4 çalışma kâğıdı.</p>
+    <p class="hero-kicker">Mantık ilişkileri · Yön analizi · Bağlaç haritası</p>
+    <h1 class="big">Cümle tamamlamanın <span class="mark">tek kuralı:</span><span class="serif">mantık önce, kelime sonra.</span></h1>
+    <p class="hero-lead">Serinin dördüncü sayısı — Reading (01) · Diyalog &amp; Durum (02) · Zamir &amp; Nicelik (03)&rsquo;ten sonra: <b>6 beceri dersi</b> (mantık, ilgi cümlecikleri, gönderim, zaman, yapı, anlam), <b>16 kalıplı Bağlaç Lab</b> ve <b>20 özgün soru</b> — 10 baştan + 10 sondan tamamlama. Her şıkta tek tek geribildirim, <b>kanıt vurgusu</b>, A4 çalışma kâğıdı.</p>
     <div class="cta-row">
       <a class="btn" href="#dersler">Derse başla <svg class="ic" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       <a class="btn ghost" href="#deneme">Denemeye geç</a>
@@ -363,66 +388,62 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
     <div class="hero-badges">
       <div class="hb"><b>6</b><span>Beceri dersi</span></div>
       <div class="hb"><b>20</b><span>Özgün soru</span></div>
-      <div class="hb"><b>10+10</b><span>EN⇄TR</span></div>
-      <div class="hb"><b>16</b><span>Lab kalıbı</span></div>
+      <div class="hb"><b>10+10</b><span>Baştan + sondan</span></div>
+      <div class="hb"><b>16</b><span>Bağlaç kalıbı</span></div>
     </div>
   </div>
   <div class="stack" aria-hidden="true">
     <svg class="stamp" viewBox="0 0 128 128"><circle cx="64" cy="64" r="60" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="64" cy="64" r="46" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="64" y="58" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="13" fill="currentColor" letter-spacing="1.5">ÖSYM</text><text x="64" y="76" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="13" fill="currentColor" letter-spacing="1.5">FORMAT</text></svg>
-    <div class="stackcard" style="--c:#C13F14"><span class="tag">Yalancı Dost</span><p>"sympathetic to the demands" ≠ sempatik</p><small>Anlayışla yaklaşıyor — yönü sorgula</small></div>
-    <div class="stackcard" style="--c:#8F6400"><span class="tag">Zaman</span><p>"had already been evacuated" → çoktan tahliye edilmişti</p><small>Past perfect öncelik bildirir</small></div>
-    <div class="stackcard" style="--c:#8E2D5A"><span class="tag">Olumsuzluk</span><p>"Sanırım … değilim" → I don't think I…</p><small>Olumsuzluk üste taşınır</small></div>
+    <div class="stackcard" style="--c:#8F6400"><span class="tag">Baştan</span><p>"____, it was withdrawn from pharmacies…"</p><small>it/they zamirini bul → şıkka kilitle</small></div>
+    <div class="stackcard" style="--c:#C13F14"><span class="tag">Mantık</span><p>"…for decades; therefore, the merger stunned…"</p><small>noktalı virgül aileyi seçer</small></div>
+    <div class="stackcard" style="--c:#8E2D5A"><span class="tag">Yapı</span><p>"such an inspiring lecture that…"</p><small>boşluktan sonraki kelime karar verir</small></div>
   </div>
 </div></div>
 
 <div class="strips"><div class="wrap"><div id="strips"></div></div></div>
 
 <section id="dersler"><div class="wrap">
-  <div class="sec-head"><span class="no">§01</span><h2>Konu Anlatımı</h2><p class="d">Çevirinin altı becerisi: tanıma tabloları, çözüm adımları ve tuzak makineleri.</p></div>
+  <div class="sec-head"><span class="no">§01</span><h2>Konu Anlatımı</h2><p class="d">Cümle tamamlamanın altı becerisi: tanıma tabloları, çözüm adımları ve tuzak makineleri.</p></div>
   <div id="lessons"><noscript><p style="font-size:.9rem;color:var(--ink2);border:2px dashed var(--ink);padding:14px 18px;background:var(--card)">Bu bölüm etkileşimlidir: ders kartları için tarayıcınızda JavaScript açık olmalıdır.</p></noscript></div>
   <div class="modalmod">
-    <p class="h-mini" style="color:var(--ink)">Ek Modül · Yalancı Dostlar Sözlüğü</p>
-    <h3 style="font-size:1.25rem;font-weight:800">Şeklen benzeyen, anlamca ihanet eden sözcükler</h3>
-    <p style="font-size:.92rem;color:var(--ink2);margin-top:8px">Listeyi çift yönde ezberleyin: İngilizceyi görünce Türkçe tuzağa düşmeyin; Türkçeyi görünce İngilizce yemi tanıyın.</p>
-    <table><thead><tr><th>İngilizce</th><th>Tuzağa düşen çeviri</th><th>Doğru karşılık</th></tr></thead><tbody>
-      <tr><td>sympathetic</td><td>sempatik</td><td>anlayışlı; destek veren</td></tr>
-      <tr><td>sensible</td><td>hassas</td><td>mantıklı, makul (hassas = sensitive)</td></tr>
-      <tr><td>actually</td><td>şu anda</td><td>aslında (şu anda = currently)</td></tr>
-      <tr><td>eventually</td><td>muhtemelen</td><td>sonunda, nihayet (muhtemelen = probably)</td></tr>
-      <tr><td>terrific</td><td>korkunç</td><td>harika, müthiş (korkunç = terrifying)</td></tr>
-      <tr><td>conceited</td><td>kavramış</td><td>kendini beğenmiş</td></tr>
-      <tr><td>novel (sıfat)</td><td>roman</td><td>yenilikçi, özgün (roman = novel, isim)</td></tr>
-      <tr><td>genuine</td><td>genel</td><td>gerçek, otantik</td></tr>
+    <p class="h-mini" style="color:var(--ink)">Ek Modül · Bağlaç Haritası</p>
+    <h3 style="font-size:1.25rem;font-weight:800">Aileyi seç ilk adım, biçimi seç ikinci adım</h3>
+    <p style="font-size:.92rem;color:var(--ink2);margin-top:8px">Haritayı iki yönde kullanın: anlamdan aileye, aileden doğru biçime.</p>
+    <table><thead><tr><th>Aile</th><th>Üyeler</th><th>Verdiği mesaj</th><th>Mikro örnek</th></tr></thead><tbody>
+      <tr><td>Karşıtlık</td><td>although, even though, whereas, despite, in spite of, however, nevertheless</td><td>beklenenin tersi gerçekleşir</td><td>"Although he trained hard, he lost."</td></tr>
+      <tr><td>Sebep</td><td>because, since, as, now that, because of, due to</td><td>gerekçe sunar</td><td>"Since you insist, I&rsquo;ll stay."</td></tr>
+      <tr><td>Sonuç</td><td>so, therefore, consequently, as a result, thus</td><td>önceki yargının neticesi</td><td>"He overslept; therefore, he missed the bus."</td></tr>
+      <tr><td>Amaç</td><td>to, in order to, so as to, so that, in order that</td><td>niyet / niçin</td><td>"She whispered so that no one would hear."</td></tr>
+      <tr><td>Koşul</td><td>if, unless, provided that, as long as, otherwise, in case</td><td>öncül-sonuç bağı</td><td>"Unless you hurry, you&rsquo;ll be late."</td></tr>
+      <tr><td>Ekleme</td><td>and, moreover, in addition, furthermore, not only…but also</td><td>aynı yöne devam</td><td>"Moreover, the data is outdated."</td></tr>
+      <tr><td>Zaman</td><td>when, while, as soon as, by the time, until, once, after</td><td>sıra / eşzamanlılık</td><td>"By the time we arrived, it was over."</td></tr>
+      <tr><td>İlgi</td><td>who, whom, which, whose, where, when</td><td>isim niteleme</td><td>"artists, many of whom…" / "centres where…"</td></tr>
     </tbody></table>
-    <div class="exbox">1. soru "sympathetic"in, 16. soru "nihayet"in (eventually/finally) sınavıdır. Kural: sözcük Türkçeye benziyorsa anlamı iki kez sorgulayın — benzerlik, tuzak kokusudur.</div>
+    <div class="exbox">Aile seçmek ilk adım, biçim seçmek ikinci: despite İSİM alır, although CÜMLE; so that + could/might geçmiş ana fiille; "if + would" her zaman yanlıştır. 3. ve 6. sorular bu cetvelin iki farklı yüzünü sınar.</div>
   </div>
   <div class="modalmod">
-    <p class="h-mini" style="color:var(--ink)">Ek Modül · Çeviri Hata Kataloğu</p>
-    <h3 style="font-size:1.25rem;font-weight:800">Yanlış şıklar altı kalıpla üretilir</h3>
-    <table><thead><tr><th>Hata türü</th><th>Nasıl görünür</th><th>Mikro örnek</th></tr></thead><tbody>
-      <tr><td>Sözcük (yalancı dost)</td><td>Benzer sesli sözcük anlam kaydırır.</td><td>sympathetic → "sempatik" ✗</td></tr>
-      <tr><td>Çatı</td><td>Pasif yardımcısı düşer ya da aktifleşir.</td><td>"were rewarded" → "rewarded" ✗</td></tr>
-      <tr><td>Zaman/kip</td><td>Perfect basit geçmişe, gelecek geçmişe devrilir.</td><td>"have finished … last night" ✗</td></tr>
-      <tr><td>Edat/bağlaç formu</td><td>İsimli bağlaç cümleyle, cümleli isimle kurulur.</td><td>"despite + cümle" · "because the fog" ✗</td></tr>
-      <tr><td>Diziliş taşıması</td><td>Türkçe diziliş İngilizceye kelime kelime taşınır; fazlalık zamir kalır.</td><td>"the engineer we met <i>him</i>" ✗</td></tr>
-      <tr><td>Kapsam/olumsuzluk</td><td>"neredeyse hiç" → "hiç"; "not both" → "none".</td><td>"Both … don't" → "Neither … has" ✓</td></tr>
+    <p class="h-mini" style="color:var(--ink)">Ek Modül · Yön Karar Rehberi</p>
+    <h3 style="font-size:1.25rem;font-weight:800">Boşluğun konumu, hangi denetim listesini açacağınızı söyler</h3>
+    <table><thead><tr><th>Boşluk nerede?</th><th>İlk bakılacak</th><th>Klasik tuzak</th><th>Bu sayfada</th></tr></thead><tbody>
+      <tr><td>Başta, ardından virgül</td><td>Ana cümledeki zamirler (it/they/whose) + fiil zamanı</td><td>Şık, zamirin sayısını/cinsiyetini taşımıyor</td><td>5, 8</td></tr>
+      <tr><td>Başta, ardından noktalı virgül</td><td>Boşluk BAĞIMSIZ cümle olacak (özne + fiil)</td><td>because / so that ile fragment</td><td>10</td></tr>
+      <tr><td>Sonda, öncesinde noktalı virgül</td><td>İkinci cümle bağımsız + bağlaç ailesi (therefore/however)</td><td>therefore ↔ however karışması</td><td>13</td></tr>
+      <tr><td>Sonda, that-cümleciğinden önce</td><td>so/such dizilişi; boşluktan SONRAKİ ilk kelime</td><td>so + a + isim ✗</td><td>4, 19</td></tr>
+      <tr><td>Sonda, ilgi zamiri görevinde</td><td>Gönderilen ismin türü (insan/nesne/yer) + virgül</td><td>virgülden sonra that ✗ · of who ✗</td><td>12, 18</td></tr>
+      <tr><td>Ortada, correlative ikinci kanadı</td><td>İki kanadın biçim eşitliği (fiil+fiil)</td><td>pasif-aktif karışımı</td><td>11, 20</td></tr>
     </tbody></table>
-    <div class="exbox">Şık okuma sırası: <b>önce sözcük (yalancı dost süzgeci), sonra yapı (çatı/zaman), sonra anlam yönü</b>. Bu üç adım, bu sayfadaki 20 sorunun tamamının çözüm iskeletidir.</div>
+    <div class="exbox">Yön tespiti 10 saniyelik bir yatırımdır: boşluğun yerini belirleyin, tablodan denetim listenizi açın. Baştan tamamlamada <b>ana cümle kraldır</b>; sondan tamamlamada <b>bağlaç ve noktalama kraldır</b>.</div>
   </div>
 </div></section>
 
-<section id="ceviri"><div class="wrap">
-  <div class="sec-head"><span class="no">§02</span><h2>Çeviri Lab — Hata Teşhis Simülatörü</h2><p class="d">Kaynak cümleyi ve HATALI çeviriyi gör, hatanın türünü (yalancı dost, çatı, zaman, edat, diziliş, kapsam, olumsuzluk, kalıp) teşhis et. 16 gerçek kalıp üzerinde refleks kazanın.</p></div>
+<section id="baglac"><div class="wrap">
+  <div class="sec-head"><span class="no">§02</span><h2>Bağlaç Lab — Mantık Teşhis Simülatörü</h2><p class="d">Cümleyi gör, bağlacın hangi mantık ailesini (karşıtlık, sebep, sonuç, amaç, koşul, ekleme, zaman, ilgi) çalıştırdığını teşhis et. 16 gerçek kalıp üzerinde refleks kazanın.</p></div>
   <div class="lab"><div class="lab-grid">
     <div>
-      <div class="rootcard">
-        <p class="lbl" id="simCount">KALIP 1 / 16</p>
-        <p class="root" id="simRoot">Yükleniyor…</p>
-        <p class="flt" id="simFlt"></p>
-      </div>
+      <div class="rootcard"><p class="lbl" id="simCount">CÜMLE 1 / 16</p><p class="root" id="simRoot">Yükleniyor…</p><p class="tr" id="simTr"></p></div>
       <div class="catbtns" id="simBtns"></div>
       <div class="simfb" id="simFb"><p class="verdict" id="simVerdict"></p><p id="simNote"></p></div>
-      <div style="margin-top:16px"><button class="btn small" id="simNext">Sıradaki kalıp <svg class="ic" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+      <div style="margin-top:16px"><button class="btn small" id="simNext">Sıradaki cümle <svg class="ic" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
     </div>
     <div class="simside">
       <div class="simstat"><b id="simScore">0</b><span>doğru teşhis</span></div>
@@ -433,10 +454,10 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
 </div></section>
 
 <section id="deneme"><div class="wrap">
-  <div class="sec-head"><span class="no">§03</span><h2>Özgün Deneme</h2><p class="d">Bölüm A: İngilizce cümle solda, Türkçe çeviri şıkları sağda. Bölüm B: Türkçe cümle solda, İngilizce çeviri şıkları sağda. Cümleye ve şıkkaki kaleme tıklayın → mavi vurgu.</p></div>
+  <div class="sec-head"><span class="no">§03</span><h2>Özgün Deneme</h2><p class="d">Bölüm A: boşluk cümlenin BAŞINDA — verilen kısım kraldır. Bölüm B: boşluk cümlenin SONUNDA — bağlaç ve noktalama kraldır. Cümleye ve şıktaki kaleme tıklayın → mavi vurgu.</p></div>
   <div class="legend" id="legend"></div>
   <div id="exam"><noscript><p style="font-size:.9rem;color:var(--ink2);border:2px dashed var(--ink);padding:14px 18px;background:var(--card)">Deneme soruları etkileşimli çalışır; baskıya hazır hâli için JavaScript gerekir.</p></noscript></div>
-  <p class="footnote">Not: Sorular bu sayfa için özgün yazılmıştır; şık dağılımı dengelidir (A×4 · B×4 · C×4 · D×4 · E×4). Kendi sorularınızı <b>veri.js</b> içindeki <b>QUESTIONS</b> dizisine aynı yapıyla ekleyebilirsiniz.</p>
+  <p class="footnote">Not: Sorular <b>veri.js</b> dosyasında tutulur ve bu sayfaya otomatik bağlanır; şık dağılımı dengelidir (A×4 · B×4 · C×4 · D×4 · E×4). Kendi sorularınızı <b>veri.js</b> içindeki <b>QUESTIONS</b> dizisine aynı yapıyla ekleyebilirsiniz.</p>
 </div></section>
 
 <section id="karne"><div class="wrap">
@@ -470,28 +491,28 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
   <div class="ws-doc" id="wsDoc">
     <div class="ws-cover">
       <div class="ws-hatch"></div>
-      <div class="ws-top"><span class="ws-mark">Ç</span><span>OPA FLUENT · YDT ÇEVİRİ LAB</span><span class="ws-tr">YDT · YDS · YÖKDİL</span></div>
-      <h2 class="ws-title">Translation · Çeviri</h2>
+      <div class="ws-top"><span class="ws-mark">C</span><span>OPA FLUENT · YDT CÜMLE TAMAMLAMA LAB</span><span class="ws-tr">YDT · YDS · YÖKDİL</span></div>
+      <h2 class="ws-title">Sentence Completion</h2>
       <p class="ws-sub">Özgün Deneme · Çalışma Kâğıdı (Worksheet)</p>
-      <p class="ws-ed">Bölüm A: 10 İngilizce → Türkçe · Bölüm B: 10 Türkçe → İngilizce · Önerilen Süre: 35 Dakika</p>
+      <p class="ws-ed">Bölüm A: 10 Baştan Tamamlama · Bölüm B: 10 Sondan Tamamlama · Önerilen Süre: 35 Dakika</p>
       <div class="ws-id">
         <span>Adı Soyadı <i></i></span><span>Sınıf / Kurs <i class="w-sm"></i></span><span>Tarih <i class="w-sm"></i></span><span>Puan <i class="w-sm"></i> / 20</span>
       </div>
       <div class="ws-inst"><b>Açıklamalar</b><ol>
-        <li>Bu çalışma kâğıdı, <b>Bölüm A</b>&rsquo;da 10 İngilizce→Türkçe, <b>Bölüm B</b>&rsquo;de 10 Türkçe→İngilizce çeviri sorusu olmak üzere <b>20 sorudan</b> oluşur. Önerilen süre 35 dakikadır.</li>
-        <li>Cümleleri kelime kelime değil <b>yapı ve anlam bütünlüğü içinde</b> çeviriniz: yalancı dost sözcükleri, çatı ve zaman uyumunu denetleyiniz.</li>
-        <li>Şıklardan cümleye anlam, dilbilgisi ve doğallık bakımından <b>en yakın</b> olanı seçiniz; gramerce kusursuz görünen şıklarda son süzgeç ANLAMDIR.</li>
-        <li>Çeviride özne sayısı, kip ve olumlu/olumsuzluk yönünün korunduğundan emin olunuz.</li>
+        <li>Bu çalışma kâğıdı, <b>Bölüm A</b>&rsquo;da 10 baştan tamamlama, <b>Bölüm B</b>&rsquo;de 10 sondan tamamlama sorusu olmak üzere <b>20 sorudan</b> oluşur. Önerilen süre 35 dakikadır.</li>
+        <li><b>Bölüm A</b>&rsquo;da cümle boşlukla başlar: verilen kısımdaki zamirleri (it/they/whose), fiil zamanını ve noktalama işaretini önce işaretleyiniz.</li>
+        <li><b>Bölüm B</b>&rsquo;de cümle boşlukla biter: bağlacın istediği mantık ilişkisini (karşıtlık, sebep, sonuç, amaç, koşul) belirleyip öyle şık okuyunuz.</li>
+        <li>Gramerce kusursuz görünen şıklarda son süzgeç ANLAMDIR: bağlacın görevini yerine getirmeyen şık elenir.</li>
         <li>Net hesabı yapmak isterseniz 4 yanlış 1 doğruyu götürür.</li>
       </ol></div>
       <div class="ws-answrap"><p class="ws-at">Cevap Tablosu — doğru şıkkın harfini daire içine alınız</p><table class="ws-ans" id="wsAns"></table></div>
       <div class="ws-rub"><b>Puanlama Rehberi (20 üzerinden)</b><table>
         <tr><td>18 – 20</td><td>Hedef seviye: süreyi 25 dakikaya indirip tekrar deneyin.</td></tr>
         <tr><td>14 – 17</td><td>İyi: hatalı becerinin "Tuzak Alanı" dersini tekrar edin.</td></tr>
-        <tr><td>10 – 13</td><td>Gelişiyor: Çeviri Lab&rsquo;ı (§02) bitmeden tekrar gelmeyin.</td></tr>
-        <tr><td>0 – 9</td><td>Temel: §01 derslerini ve Yalancı Dostlar Sözlüğü&rsquo;nü sırayla işleyin.</td></tr>
+        <tr><td>10 – 13</td><td>Gelişiyor: Bağlaç Lab&rsquo;ı (§02) bitmeden tekrar gelmeyin.</td></tr>
+        <tr><td>0 – 9</td><td>Temel: §01 derslerini ve Bağlaç Haritası&rsquo;nı sırayla işleyin.</td></tr>
       </table></div>
-      <p class="ws-credit">Opa Fluent Yayınları · Translation · ÖSYM tarzına uygun özgün içerik</p>
+      <p class="ws-credit">Opa Fluent Yayınları · Sentence Completion · ÖSYM tarzına uygun özgün içerik</p>
     </div>
   </div>
 </div></section>
@@ -505,16 +526,17 @@ footer .fl{font-family:'Newsreader',serif;font-style:italic}
   <div>
     <h5>GitHub → Netlify Dağıtımı (2 dosya)</h5>
     <div class="deploy"><ol>
-      <li>Depoya <b>iki dosyayı da</b> yükleyin: <code>index.html</code> ve <code>veri.js</code> — aynı klasörde (kök dizin).</li>
+      <li>Depoya <b>iki dosyayı da</b> yükleyin: <code>index.html</code> ve <code>veri.js</code> — aynı klasörde (kök dizin). Bağlantı <code>&lt;script src="veri.js"&gt;</code> satırıyla kurulur.</li>
       <li>Netlify&rsquo;da <code>Add new site → Import an existing project</code> ile repo&rsquo;yu bağlayın. Build command: <b>yok</b> · Publish directory: <b>kök dizin</b>.</li>
       <li>Alternatif: iki dosyayı bir klasöre koyup klasörü Netlify&rsquo;a sürükleyin (<code>Deploy manually</code>).</li>
     </ol></div>
   </div>
 </div>
-<div class="wrap"><div class="footrow"><span>YDT ÇEVİRİ LAB · OPA FLUENT</span><span>İKİ DOSYA · index.html + veri.js</span></div></div></footer>
+<div class="wrap"><div class="footrow"><span>YDT CÜMLE TAMAMLAMA LAB · OPA FLUENT</span><span>İKİ DOSYA · index.html + veri.js</span></div></div></footer>
 
 <div class="toast" id="toast"></div>
 
+<!-- ═══ BAĞLANTI: sorular bu satırla yüklenir ═══ -->
 <script src="veri.js"></script>
 <script>
 (function(){
@@ -531,15 +553,15 @@ function showAllErrs(){
   window.__showErr(h);
 }
 if(!window.__VERI_OK){
-  window.__showErr('<b>veri.js yüklenemedi veya tam kopyalanmadı.</b><br>'+
+  window.__showErr('<b>veri.js yüklenemedi veya tam kopyalanmadı — sorular görünmüyor.</b><br>'+
     '• index.html ile AYNI klasörde <b>veri.js</b> adlı dosya olmalı (Netlify/GitHub kök dizini).<br>'+
     '• veri.js sonunda <b>VERI-SONU</b> işareti görünmüyorsa kopya eksiktir; yeniden kopyalayın.<br>'+
-    '• Tasarım yine açılır; sorular veri.js gelince görünür.');
+    '• Tasarım yine açılır; sorular veri.js gelince otomatik bağlanır.');
   return;
 }
 var CATS=window.CATS||{},LESSONS=window.LESSONS||[],LABTAGS=window.LABTAGS||{},
     LABITEMS=window.LABITEMS||[],QUESTIONS=window.QUESTIONS||[],SENT={};
-var KEY='ydt-ceviri-lab-v1';
+var KEY='ydt-cumle-lab-v1';
 var state={ans:{},marks:{},wskey:false,sim:{score:0,streak:0,best:0,idx:0}};
 try{
   var raw=localStorage.getItem(KEY);
@@ -556,7 +578,7 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
       if(!CATS[q.cat])v.push('Soru '+q.id+': bilinmeyen beceri');
       if(!q.opts||q.opts.length!==5)v.push('Soru '+q.id+': şık sayısı 5 değil');
       if(!(typeof q.ans==='number'&&q.ans>=0&&q.ans<5))v.push('Soru '+q.id+': ans 0-4 değil');
-      if(!q.facts||!q.facts.length)v.push('Soru '+q.id+': kaynak cümle (facts) eksik');
+      if(!q.facts||!q.facts.length)v.push('Soru '+q.id+': cümle (facts) eksik');
       if(q.part!=='A'&&q.part!=='B')v.push('Soru '+q.id+': part A veya B olmalı');
     });
   }
@@ -612,11 +634,11 @@ safe('Dersler',function(){
   window.openLesson=function(cat){for(var k in LESSON_EL){LESSON_EL[k].classList.toggle('open',k===cat);}};
 });
 
-/* çeviri lab */
+/* bağlaç lab */
 var simOrder=[];
-safe('Çeviri Lab',function(){
+safe('Bağlaç Lab',function(){
   var b=document.getElementById('simBtns');if(!b)return;
-  if(!LABITEMS.length||!Object.keys(LABTAGS).length){b.innerHTML='<p class="footnote">Lab verisi yok.</p>';return;}
+  if(!LABITEMS.length||!Object.keys(LABTAGS).length){b.innerHTML='<p class="footnote">Bağlaç Lab verisi yok.</p>';return;}
   function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
   simOrder=shuf(LABITEMS.map(function(_,i){return i;}));
   Object.keys(LABTAGS).forEach(function(k){
@@ -629,9 +651,9 @@ safe('Çeviri Lab',function(){
   rStats();rRoot();
   function rRoot(){
     var i=state.sim.idx%simOrder.length;var r=LABITEMS[simOrder[i]];
-    document.getElementById('simCount').textContent='KALIP '+(i+1)+' / '+simOrder.length;
-    document.getElementById('simRoot').textContent=r.src;
-    document.getElementById('simFlt').textContent='HATALI ÇEVİRİ: '+r.flt;
+    document.getElementById('simCount').textContent='CÜMLE '+(i+1)+' / '+simOrder.length;
+    document.getElementById('simRoot').textContent=r.en;
+    document.getElementById('simTr').textContent='TR: '+r.tr;
     Array.prototype.forEach.call(document.querySelectorAll('.catb'),function(x){x.classList.remove('wasright','waswrong');x.disabled=false;});
     var f=document.getElementById('simFb');if(f)f.classList.remove('show');
   }
@@ -644,12 +666,12 @@ safe('Çeviri Lab',function(){
     if(ok){state.sim.score++;state.sim.streak++;state.sim.best=Math.max(state.sim.best,state.sim.streak);}else{state.sim.streak=0;}
     save();rStats();
     var v=document.getElementById('simVerdict');
-    if(v){v.textContent=ok?('Doğru teşhis — '+LABTAGS[r.tag].name):('Yanlış — bu hata '+LABTAGS[r.tag].name+' türündendi');v.className='verdict '+(ok?'ok':'no');}
+    if(v){v.textContent=ok?('Doğru teşhis — '+LABTAGS[r.tag].name):('Yanlış — bu cümle '+LABTAGS[r.tag].name+' ailesini tetikliyordu');v.className='verdict '+(ok?'ok':'no');}
     var nt=document.getElementById('simNote');if(nt)nt.innerHTML=r.note;
     if(f)f.classList.add('show');
   }
   function simNext(){state.sim.idx++;
-    if(state.sim.idx%simOrder.length===0){simOrder=shuf(simOrder);toast('Kalıp destesi yeniden karıştırıldı');}
+    if(state.sim.idx%simOrder.length===0){simOrder=shuf(simOrder);toast('Cümle destesi yeniden karıştırıldı');}
     save();rRoot();}
   function rStats(){
     document.getElementById('simScore').textContent=state.sim.score;
@@ -681,11 +703,11 @@ safe('Deneme',function(){
     var sq=el('div','sq');sq.style.setProperty('--c',c.color);sq.id='q'+q.id;
     var left=el('div','sq-b');
     left.innerHTML='<div class="sq-tab"><b>CÜMLE DOSYASI</b><span>'+
-      (q.part==='A'?'İngilizce kaynak · tıkla-vurgu':'Türkçe kaynak · tıkla-vurgu')+'</span></div>';
+      (q.part==='A'?'boşluk başta · tıkla-vurgu':'boşluk sonda · tıkla-vurgu')+'</span></div>';
     var body=el('div','sq-body');
     (q.facts||[]).forEach(function(f,j){
       var id='s'+q.id+'-f'+j;
-      var p=el('p','fact','"'+esc(f)+'"');
+      var p=el('p','fact',esc(f).replace(/_{4}/g,'<b class="gap">____</b>'));
       p.id=id;p.title='Tıklayıp işaretle / kaldır';
       p.addEventListener('click',function(){toggleMark(id,p);});
       body.appendChild(p);if(SENT[id])SENT[id].node=p;});
@@ -724,7 +746,7 @@ safe('Deneme',function(){
     var fb=card.querySelector('.fb');if(!fb)return;
     fb.classList.add('show');
     var evq=(q.ev||[]).map(function(id){var s=SENT[id];if(!s)return '';
-      return '"'+esc(s.text)+'"';}).join(' ');
+      return '"'+esc(s.text).replace(/_{4}/g,'____')+'"';}).join(' ');
     var H=[];
     H.push('<div class="fb-h '+(ok?'ok':'no')+'"><svg class="ic" viewBox="0 0 24 24" width="18" height="18">'+(ok?OKI:NOI)+'</svg>');
     H.push(ok?('Doğru — '+c.name+' becerisi yerinde'):('Yanlış — doğru cevap: '+'ABCDE'[q.ans])+'</div>');
@@ -734,7 +756,7 @@ safe('Deneme',function(){
     H.push('<h4>Neden <b>'+'ABCDE'[q.ans]+'</b> doğru?</h4>');
     H.push('<p class="fb-p">'+esc(q.opts[q.ans][1]).replace(/^DOĞRU\.\s*/,'')+'</p>');
     H.push('<p class="fb-p" style="margin-top:6px">'+esc(q.why)+'</p>');
-    H.push('<h4>Kaynak cümle (kanıt)</h4><div class="evq">'+evq+'</div>');
+    H.push('<h4>Cümledeki kanıt</h4><div class="evq">'+evq+'</div>');
     H.push('<h4>Şık şık geribildirim — çeldirici dökümü</h4><ul class="dump">');
     q.opts.forEach(function(o,i){
       var cls=(i===q.ans?'okr':'')+((i===chosen&&i!==q.ans)?' mine':'');
@@ -764,11 +786,11 @@ safe('Deneme',function(){
   var pa=QUESTIONS.filter(function(q){return q.part==='A';});
   var pb=QUESTIONS.filter(function(q){return q.part==='B';});
   if(pa.length){
-    exam.appendChild(el('div','partdiv','<b>BÖLÜM A · İNGİLİZCE → TÜRKÇE</b><span>Sorular '+pa[0].id+'–'+pa[pa.length-1].id+' · en yakın Türkçe çeviri</span>'));
+    exam.appendChild(el('div','partdiv','<b>BÖLÜM A · BAŞTAN TAMAMLAMA</b><span>Sorular '+pa[0].id+'–'+pa[pa.length-1].id+' · boşluk cümlenin başında</span>'));
     pa.forEach(function(q){exam.appendChild(buildS(q));});
   }
   if(pb.length){
-    exam.appendChild(el('div','partdiv','<b>BÖLÜM B · TÜRKÇE → İNGİLİZCE</b><span>Sorular '+pb[0].id+'–'+pb[pb.length-1].id+' · en yakın İngilizce çeviri</span>'));
+    exam.appendChild(el('div','partdiv','<b>BÖLÜM B · SONDAN TAMAMLAMA</b><span>Sorular '+pb[0].id+'–'+pb[pb.length-1].id+' · boşluk cümlenin sonunda</span>'));
     pb.forEach(function(q){exam.appendChild(buildS(q));});
   }
   Object.keys(state.marks).forEach(applyMarkNode);
@@ -803,7 +825,7 @@ function updateReport(){
     ' soru tamamlanınca karnen kesinleşecek'+(best?(' — şimdilik en güçlü alanın: <b>'+best.n+'</b> (%'+best.p+')'):'')+'.';}
   else{msg.innerHTML='Deneme tamam! Doğru: <b>'+right+'/'+TOTAL+'</b> · Başarı: <b>%'+Math.round(right/TOTAL*100)+
     '</b>. En güçlü alanın <b>'+best.n+'</b> (%'+best.p+'), çalışman gereken alan <b>'+worst.n+'</b> (%'+worst.p+
-    '). İlgili dersin "Tuzak Alanı" kutusunu ve Yalancı Dostlar Sözlüğü’nü yeniden oku, Çeviri Lab’ı bir tur at, sonra tekrar dene.';}
+    '). İlgili dersin "Tuzak Alanı" kutusunu ve Bağlaç Haritası’nı yeniden oku, Bağlaç Lab’ı bir tur at, sonra tekrar dene.';}
 }
 safe('Karne',function(){updateReport();});
 
@@ -840,7 +862,7 @@ safe('Kâğıt',function(){
         var td=el('td');for(var L=0;L<5;L++)td.appendChild(el('span','bub','ABCDE'[L]));tr2.appendChild(td);});
       ansT.appendChild(tr1);ansT.appendChild(tr2);}}
   function wq(q){
-    var facts=(q.facts||[]).map(function(f){return esc(f);}).join(' ');
+    var facts=(q.facts||[]).map(function(f){return esc(f).replace(/_{4}/g,'<b class="ws-bl">____</b>');}).join(' ');
     return '<p class="ws-qq"><b>'+q.id+'.</b> '+facts+' '+q.stem+'</p>'+
       '<ul class="ws-oo">'+q.opts.map(function(o,i){
         return '<li><span class="k">'+'ABCDE'[i]+')</span><span>'+esc(o[0])+'</span></li>';}).join('')+'</ul>';
@@ -848,17 +870,17 @@ safe('Kâğıt',function(){
   var pa=QUESTIONS.filter(function(q){return q.part==='A';});
   if(pa.length){
     var secA=el('div','ws-pas');
-    secA.innerHTML='<div class="ws-ph"><span class="ws-pno">BÖLÜM A</span><h3>İngilizce → Türkçe</h3>'+
-      '<span class="ws-pm">Sorular '+pa[0].id+'–'+pa[pa.length-1].id+'</span></div>'+
-      '<p class="ws-note-line">Yalancı dost sözcükleri, çatı ve zaman uyumunu denetleyerek çeviriniz.</p>';
+    secA.innerHTML='<div class="ws-ph"><span class="ws-pno">BÖLÜM A</span><h3>Baştan Tamamlama</h3>'+
+      '<span class="ws-pm">Sorular '+pa[0].id+'–'+pa[pa.length-1].id+' · boşluk cümlenin başında</span></div>'+
+      '<p class="ws-note-line">Verilen kısımdaki zamirleri, fiil zamanını ve noktalama işaretini önce işaretleyiniz.</p>';
     pa.forEach(function(q){secA.appendChild(el('div','ws-q',wq(q)));});
     doc.appendChild(secA);}
   var pb=QUESTIONS.filter(function(q){return q.part==='B';});
   if(pb.length){
     var secB=el('div','ws-partb');
-    secB.innerHTML='<div class="ws-ph"><span class="ws-pno">BÖLÜM B</span><h3>Türkçe → İngilizce</h3>'+
-      '<span class="ws-pm">Sorular '+pb[0].id+'–'+pb[pb.length-1].id+'</span></div>'+
-      '<p class="ws-note-line">Dizilişi yeniden kurunuz; fazlalık zamir ve çifte bağlaçtan kaçınınız.</p>';
+    secB.innerHTML='<div class="ws-ph"><span class="ws-pno">BÖLÜM B</span><h3>Sondan Tamamlama</h3>'+
+      '<span class="ws-pm">Sorular '+pb[0].id+'–'+pb[pb.length-1].id+' · boşluk cümlenin sonunda</span></div>'+
+      '<p class="ws-note-line">Bağlacın istediği mantık ilişkisini belirleyip öyle şık okuyunuz.</p>';
     pb.forEach(function(q){secB.appendChild(el('div','ws-q',wq(q)));});
     doc.appendChild(secB);}
   var ksum=Object.keys(CATS).map(function(k){var c=CATS[k];
@@ -867,10 +889,10 @@ safe('Kâğıt',function(){
   var kqs=QUESTIONS.map(function(q){
     var c=CATS[q.cat]||{name:'?',color:'#333'};
     var ev=(q.ev||[]).map(function(id){var s=SENT[id];if(!s)return '';
-      return '"'+esc(s.text)+'"';}).join(' ');
+      return '"'+esc(s.text).replace(/_{4}/g,'____')+'"';}).join(' ');
     return '<div class="ws-kq" style="--c:'+c.color+'"><p class="ws-kqh"><b>'+q.id+' — DOĞRU CEVAP: '+
       'ABCDE'[q.ans]+'</b><span>'+c.name+'</span></p><p class="ws-kw">'+esc(q.why)+
-      '</p><p class="ws-ke"><b>Kaynak:</b> '+ev+'</p><p class="ws-ks"><b>Strateji:</b> '+esc(q.strat)+'</p></div>';}).join('');
+      '</p><p class="ws-ke"><b>Kanıt:</b> '+ev+'</p><p class="ws-ks"><b>Strateji:</b> '+esc(q.strat)+'</p></div>';}).join('');
   var key=el('div','ws-key');var KH=[];
   KH.push('<div class="ws-kh"><b>Cevap Anahtarı · Öğretmen Nüshası</b><span>Bu sayfaları öğrenciye dağıtmadan önce ayırınız</span></div>');
   if(QUESTIONS.length){KH.push('<div class="ws-kgrid">'+QUESTIONS.map(function(q){
@@ -896,11 +918,11 @@ if('IntersectionObserver' in window){
     if(e.isIntersecting){Array.prototype.forEach.call(document.querySelectorAll('#topnav a'),function(a){
       a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});}});},
     {rootMargin:'-40% 0px -55% 0px'});
-  ['dersler','ceviri','deneme','karne','calisma'].forEach(function(id){
+  ['dersler','baglac','deneme','karne','calisma'].forEach(function(id){
     var n=document.getElementById(id);if(n)io.observe(n);});
 }
 if(window.__LAB.errs.length===0){
-  try{console.log('Çeviri Lab: '+QUESTIONS.length+' soru, '+LESSONS.length+' ders — OK');}catch(e){}
+  try{console.log('Cümle Tamamlama Lab v2: '+QUESTIONS.length+' soru, '+LESSONS.length+' ders — OK');}catch(e){}
 }else{showAllErrs();}
 })();
 </script>
