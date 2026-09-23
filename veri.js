@@ -1,11 +1,11 @@
 /* ══════════════════════════════════════════════════════════
-   YDT CÜMLE TAMAMLAMA LAB — veri.js (DOSYA 2/2)
-   Dersler, Bağlaç Lab kalıpları ve 20 soru.
-   Bu dosyada Türkçe karakterler doğrudan (literal) yazılmıştır;
-   hiç \u kaçışı yoktur. UTF-8 olarak kaydedin.
+   YDT CÜMLE TAMAMLAMA LAB — veri.js (DOSYA 2/2 · SORULAR DAHİL)
+   index.html'deki <script src="veri.js"> satırı bu dosyayı yükler;
+   sorular derslere, denemeye, karneye ve kâğıda otomatik bağlanır.
+   Türkçe karakterler doğrudan yazılmıştır; UTF-8 olarak kaydedin.
    Soru eklerken aynı alanları kullanın:
    id, part('A' baştan | 'B' sondan), cat, stem, clue,
-   facts[cümle(ler), boşluk ____], opts[[metin,geribildirim]×5],
+   facts[cümle, boşluk ____], opts[[metin,geribildirim]×5],
    ans(0-4), ev, why, strat
    ══════════════════════════════════════════════════════════ */
 
@@ -123,7 +123,7 @@ window.LABTAGS = {
 };
 
 window.LABITEMS = [
-  {en:'The evidence was overwhelming; therefore, the jury took less than an hour to reach a verdict.', tr:'Kanıtlar eziciydi; bu yüzden jüri karara varmak için bir saatten az süre harcadı.', tag:'son', note:'Noktalı virgül + "therefore": önceki yargının NETİCESİ — ezici kanıt → hızlı mahkûmiyet zinciri.'},
+  {en:'The evidence was overwhelming; therefore, the jury took less than an hour to reach a verdict.', tr:'Kanıtlar eziciydi; bu yüzden jüri karara varmak için bir saatten az süre harcadı.', tag:'son', note:'Noktalı virgül + "therefore": önceki yargının NETİCESİ — ezici kanıt → hızlı karar zinciri.'},
   {en:'Despite the heavy traffic, the ambulance reached the hospital in under ten minutes.', tr:'Yoğun trafiğe rağmen ambulans on dakikadan kısa sürede hastaneye ulaştı.', tag:'kar', note:'"Despite + isim öbeği": beklenen gecikmeye rağmen ulaşma — rağmen ailesinin isimli üyesi. Although olsaydı cümle gelirdi.'},
   {en:'She left a spare key with the neighbours so that they could water the plants while she was away.', tr:'Yokken komşuların bitkileri sulayabilmesi için onlara yedek anahtar bıraktı.', tag:'ama', note:'"so that + could": anahtar bırakma eyleminin NİYETİ — amaç ailesi, kip geçmiş ana fiile kilitli.'},
   {en:'The flight was delayed for two hours because the runway was being resurfaced.', tr:'Pist yeniden kaplandığı için uçuş iki saat ertelendi.', tag:'seb', note:'"because + cümle": gecikmeyi AÇIKLAYAN yan cümle — sebep-sonuç yönü net: pist çalışması → gecikme.'},
@@ -403,7 +403,7 @@ window.QUESTIONS = [
      ['such an inspiring lecture','DOĞRU. such + a/an + sıfat + isim + that: "o kadar etkileyici bir konferanstı ki salondan ayrılmak istemediler" — diziliş kusursuz.'],
      ['so inspiring lecture','so + sıfat doğru başlangıç ama isim TEKİL sayılabilir ve a/an’sız kalmış: "so inspiring a lecture" ya da "such an inspiring lecture" gerekirdi.'],
      ['a so inspiring lecture','"a/an" ile "so" bu sırada birleşemez: "so" sıfattan önce gelir; a/an’ın yeri such’tan sonradır. Diziliş kuralları katıdır.'],
-     ['such inspiring a lecture','"such" ile "a/an" yer değiştirmiş: kalıp "such A MOVING lecture"tır; "such inspiring a lecture" ✗.']
+     ['such inspiring a lecture','"such" ile "a/an" yer değiştirmiş: kalıp "such AN INSPIRING lecture"tır; "such inspiring a lecture" ✗.']
    ],
    ans:1, ev:['s19-f0'],
    why:'Boşluktan sonra "an + sıfat + isim + that" geliyor: bu diziliş yalnız "such" ile kurulur. so olsaydı sıfatın hemen önünde duracak ve tekil isimden önce a/an’ı ya hiç almayacak ya da sıfattan sonraya koyacaktı. B, kalıbın tek doğru sıralaması.',
